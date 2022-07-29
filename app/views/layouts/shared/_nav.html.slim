@@ -1,0 +1,27 @@
+header.p-3.bg-dark.text-white
+  .container
+    .nav.d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start
+      ul.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0
+        li.nav-item.me-2
+          = link_to root_path, class: 'nav-link text-white' do
+            = t('home')
+      ul.nav.col-12.col-lg-auto.mb-2.mb-md-0
+       / - if user_signed_in?
+       /   li.nav-item.me-2
+       /     = link_to new_post_path, class: 'nav-link text-white' do
+       /       = t('post.new')
+       /   li.nav-item.me-2
+       /     = link_to destroy_user_session_path, class: 'nav-link text-white', method: :delete do
+       /       = t('user.log_out')
+       / - else
+       /   li
+       /     = link_to new_user_session_path, class: 'nav-link text-white' do
+       /       = t('user.log_in')
+       /   li
+       /     = link_to new_user_registration_path, class: 'nav-link text-white' do
+       /       = t('user.sign_up')
+      ul.nav.col-12.col-lg-auto.mb-2.mb-md-0
+        li
+          - I18n.available_locales.without(I18n.locale).each do |locale|
+            = link_to url_for(locale: locale) do
+              = image_tag asset_pack_path("media/images/flag-#{locale}.svg"), width: 25, alt: "switch language to #{locale}"

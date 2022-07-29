@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    title
+      = t('title.title_head')
+    = csrf_meta_tags
+    = csp_meta_tag
+    meta[content="template language" name="keywords"]
+    meta[content="author" name="author"]
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+  body.d-flex.flex-column.h-100
+    = render 'layouts/shared/nav'
+    = render 'layouts/shared/flash'
+    main
+      .mt-4.mb-5.pb-5
+        .container
+          .p-4.align-items-center.border.shadow.bg-white.rounded-3
+            .mb-4
+              h2
+                = yield :title
+            = yield
