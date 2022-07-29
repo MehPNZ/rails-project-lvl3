@@ -1,0 +1,5 @@
+en:
+  comment:
+    create: Comment created!
+    update: Comment was successfully updated!
+    destroy: Comment was successfully destroy!

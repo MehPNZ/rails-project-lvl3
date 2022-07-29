@@ -1,0 +1,12 @@
+ru:
+  title:
+    title_head: Блоги
+    title_main: Коллективный блог
+  home: Домой
+  back: Назад
+  comments_count:
+    zero: "нет комментариев"
+    one: "%{count} комментарий"
+    few: "%{count} комментария"
+    many: "%{count} комментариев"
+    other: "%{count} комментарии"
