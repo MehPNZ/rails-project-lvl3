@@ -1,20 +1,15 @@
 class Web::AuthController < ApplicationController
   def callback
-    user_email = auth[:info][:email].downcase
-    user_name = auth[:info][:name]
-    existing_user = User.find_by(email: user_email)
+    email = auth[:info][:email].downcase
+    name = auth[:info][:name]
+    existing_user = User.find_by(email: email)
 
     if existing_user
        sign_in existing_user
-       redirect_to root_path, notice: "Welcome, #{user_name}!"
+       redirect_to root_path, notice: t('user.welcome', user_name: name)
     else
-      @user = User.new(email: user_email, name: user_name)
-      if @user.save
-        sign_in @user
-        redirect_to root_path, notice:  "Welcome, #{user_name}!"
-      else
-        redirect_to root_path, status: :unprocessable_entity
-      end
+      user = User.new(email: email, name: name)
+      create_user(user)
     end
 
   end
@@ -23,5 +18,14 @@ class Web::AuthController < ApplicationController
 
   def auth
     request.env['omniauth.auth']
+  end
+
+  def create_user(user)
+    if user.save
+      sign_in user
+      redirect_to root_path, notice: t('user.welcome', user_name: user.name)
+    else
+      redirect_to root_path, status: :unprocessable_entity
+    end
   end
 end

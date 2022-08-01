@@ -1,5 +1,6 @@
 ru:
   user:
+    welcome: "Добро пожаловать, %{user_name}!" 
     log_in: Войти
     sign_up: Регистрация
     log_out: Выйти

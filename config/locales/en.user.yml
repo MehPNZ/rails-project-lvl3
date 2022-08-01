@@ -1,5 +1,6 @@
 en:
   user:
+    welcome: "Welcome, %{user_name}!" 
     log_in: Log in
     sign_up: Registration
     log_out: Exit

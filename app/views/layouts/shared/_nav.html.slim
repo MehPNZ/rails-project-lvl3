@@ -7,20 +7,16 @@ header.p-3.bg-dark.text-white
             = t('home')
       ul.nav.col-12.col-lg-auto.mb-2.mb-md-0
         li.nav-item.me-2
-          /= link_to new_session_path, class: 'nav-link text-white' do
-          /  = t('user.log_in')
-
-          /= form_tag('/auth/github', method: 'post', data: {turbo: false}) do
-          /  <button type='submit'>Login with Developer</button>
         - if user_signed_in?
           li.nav-item.me-2
             = link_to session_path, class: 'nav-link text-white', method: :delete do
-              = t('user.log_out')
+              = t('user.log_out')        
         - else
-          li
-            = link_to auth_request_path('github'), method: :post, class: 'btn w-100 border btn-outline-secondary' do
+          li.nav-item.me-2
+            = link_to auth_request_path('github'), method: :post, class: 'nav-link text-white' do
+              span.bi.bi-github.me-2
+                = image_tag asset_pack_path("media/images/github.svg")
               = t('user.log_in')
-    
       ul.nav.col-12.col-lg-auto.mb-2.mb-md-0
         li
           - I18n.available_locales.without(I18n.locale).each do |locale|
