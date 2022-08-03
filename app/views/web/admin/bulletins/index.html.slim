@@ -46,7 +46,7 @@
               td = bulletin.created_at.strftime('%d-%m-%Y')
               td = link_to t('bulletin.show'), bulletin_path(bulletin), class: 'me-1'
               - unless bulletin.archived?
-                td = link_to t('bulletin.archive'), '#', class: 'text-danger'
+                td = link_to t('bulletin.archive'), archive_admin_bulletin_path(bulletin), method: :patch, class: 'text-danger'
               td
 
 == pagy_bootstrap_nav @pagy
