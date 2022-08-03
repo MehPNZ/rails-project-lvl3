@@ -8,7 +8,7 @@ class Web::BulletinsController < ApplicationController
   def index
     @q = Bulletin.ransack(params[:q])
 
-    @pagy, @bulletins = pagy @q.result(distinct: true).where(aasm_state: 'published').includes(:category)
+    @pagy, @bulletins = pagy @q.result(distinct: true).where(state: 'published').includes(:category)
   end
 
   def show; end

@@ -12,7 +12,8 @@ class Bulletin < ApplicationRecord
   validates :image, attached: true,
                     content_type: %i[png jpg jpeg],
                     size: { less_than: 5.megabytes }
-  aasm do
+
+  aasm :column => 'state' do
     state :draft, initial: true
     state :under_moderation
     state :published
@@ -34,5 +35,5 @@ class Bulletin < ApplicationRecord
     event :archive do
       transitions from: %i[draft under_moderation published rejected], to: :archived
     end
-  end
+  end             
 end

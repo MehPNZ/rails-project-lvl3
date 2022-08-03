@@ -18,7 +18,7 @@
                 small class="form-text text-muted" = t('bulletin.search_title')
           .col-3
             .form-group.mb-3
-              = f.select :aasm_state_cont, 
+              = f.select :state_cont, 
                 [["#{t('draft')}", :draft], 
                 ["#{t('under_moderation')}", :under_moderation], 
                 ["#{t('published')}", :published],
@@ -43,7 +43,7 @@
           - @bulletins.each do |bulletin|
             tr
               td = bulletin.title
-              td = t("#{bulletin.aasm_state}")
+              td = t("#{bulletin.state}")
               td = bulletin.created_at.strftime("%d-%m-%Y")
               td = link_to t('bulletin.show'), bulletin_path(bulletin), class: 'me-1'
               - unless bulletin.archived?
