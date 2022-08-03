@@ -296,6 +296,16 @@ GEM
       actionpack (>= 3.1)
       railties (>= 3.1)
       slim (>= 3.0, < 5.0)
+    slim_lint (0.22.1)
+      rubocop (>= 0.78.0)
+      slim (>= 3.0, < 5.0)
+    slimcop (0.17.1)
+      slimi (>= 0.5.1)
+      templatecop
+    slimi (0.7.2)
+      temple
+      thor
+      tilt
     spring (4.0.0)
     sprockets (4.1.1)
       concurrent-ruby (~> 1.0)
@@ -305,6 +315,10 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     sqlite3 (1.4.4)
+    templatecop (0.3.0)
+      parallel
+      parser
+      rubocop (>= 0.87)
     temple (0.8.2)
     thor (1.2.1)
     tilt (2.0.11)
@@ -373,6 +387,8 @@ DEPENDENCIES
   simple_form
   slim
   slim-rails
+  slim_lint
+  slimcop
   spring
   sqlite3 (~> 1.4)
   turbolinks (~> 5)

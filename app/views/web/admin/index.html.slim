@@ -22,7 +22,7 @@
           - @bulletins.each do |bulletin|
             tr
               td = link_to bulletin.title, bulletin_path(bulletin)
-              td = bulletin.created_at.strftime("%d-%m-%Y")
+              td = bulletin.created_at.strftime('%d-%m-%Y')
               td = link_to t('bulletin.publish'), publish_admin_bulletin_path(bulletin), method: :patch, class: 'me-1'
               td = link_to t('bulletin.return'), reject_admin_bulletin_path(bulletin), method: :patch, class: 'me-1'
               td = link_to t('bulletin.archive'), archive_admin_bulletin_path(bulletin), method: :patch, class: 'text-danger'

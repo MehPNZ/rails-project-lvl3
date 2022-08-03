@@ -2,7 +2,7 @@
   .p-3.p-lg-5.pt-lg-0
     .mb-4
       h2 = @bulletin.title
-      .row          
+      .row
         .col-8
           - if @bulletin.image_attachment
             = image_tag(@bulletin.image.variant(resize_to_limit: [600, 400]), class: 'img-thumbnail mb-2')
@@ -13,4 +13,3 @@
             .card-body
               h1.h5.card-title
                 = @bulletin.user.name
-        

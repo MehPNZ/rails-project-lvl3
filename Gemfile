@@ -45,6 +45,8 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'faker'
   gem 'rubocop-rails'
+  gem 'slimcop'
+  gem 'slim_lint'
   gem 'sqlite3', '~> 1.4'
 end
 

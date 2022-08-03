@@ -14,20 +14,19 @@
           .col-6
             .form-group.mb-3
               = f.search_field :title_cont, class: 'form-control'
-              p 
+              p
                 small class="form-text text-muted" = t('bulletin.search_title')
           .col-3
             .form-group.mb-3
-              = f.select :state_cont, 
-                [["#{t('draft')}", :draft], 
-                ["#{t('under_moderation')}", :under_moderation], 
-                ["#{t('published')}", :published],
-                ["#{t('rejected')}", :rejected],
-                ["#{t('archived')}", :archived]], {include_blank: true} ,{class: 'form-control'}
-              p 
+              = f.select :state_cont,
+                [[t('draft').to_s, :draft],
+                [t('under_moderation').to_s, :under_moderation],
+                [t('published').to_s, :published],
+                [t('rejected').to_s, :rejected], [t('archived').to_s, :archived]], { include_blank: true }, { class: 'form-control' }
+              p
                 small class="form-text text-muted" = t('bulletin.search_state')
           .col-3
-            = f.submit t('search'), class: 'btn btn-primary me-2' 
+            = f.submit t('search'), class: 'btn btn-primary me-2'
             = link_to t('reset'), admin_bulletins_path, class: 'btn btn-outline-primary'
     .row.mt-2
       table.table-borderless
@@ -43,11 +42,11 @@
           - @bulletins.each do |bulletin|
             tr
               td = bulletin.title
-              td = t("#{bulletin.state}")
-              td = bulletin.created_at.strftime("%d-%m-%Y")
+              td = t(bulletin.state.to_s)
+              td = bulletin.created_at.strftime('%d-%m-%Y')
               td = link_to t('bulletin.show'), bulletin_path(bulletin), class: 'me-1'
               - unless bulletin.archived?
-                td = link_to t('bulletin.archive'), "#", class: 'text-danger'
+                td = link_to t('bulletin.archive'), '#', class: 'text-danger'
               td
 
 == pagy_bootstrap_nav @pagy

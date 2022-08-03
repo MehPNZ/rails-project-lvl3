@@ -8,12 +8,12 @@
           .col-6
             .form-group.mb-3
               = f.search_field :title_cont, class: 'form-control'
-              p 
+              p
                 small class="form-text text-muted" = t('bulletin.search_title')
           .col-4
             .form-group.mb-3
-              = f.collection_select(:category_id_eq, Category.all, :id, :name, {include_blank: true}, {class: 'form-control'})
-              p 
+              = f.collection_select(:category_id_eq, Category.all, :id, :name, { include_blank: true }, { class: 'form-control' })
+              p
                 small class="form-text text-muted" = t('bulletin.search_category')
           .col-2
             = f.submit t('search'), class: 'btn btn-primary'
@@ -25,10 +25,10 @@
         .col-3.pt-2
           .card.shadow-sm
             - if bulletin.image_attachment
-              = image_tag(bulletin.image.variant(resize_to_limit: [600, 400]),height: 200, class: 'card-img-top x-object-fit-cover ')
+              = image_tag(bulletin.image.variant(resize_to_limit: [600, 400]), height: 200, class: 'card-img-top x-object-fit-cover ')
             .card-body
               h5
                 = link_to bulletin.title, bulletin, class: 'card-subtitle mb-2 text-muted'
-              = bulletin.created_at.strftime("%d-%m-%Y")
+              = bulletin.created_at.strftime('%d-%m-%Y')
 
 == pagy_bootstrap_nav @pagy

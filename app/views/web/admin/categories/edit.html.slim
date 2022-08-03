@@ -1,6 +1,4 @@
 h1 = t('category.editing')
-
 .row
-  = render "menu"
-  
+  = render 'menu'
   =render partial: 'form', locals: { url: admin_category_path(@category) }
