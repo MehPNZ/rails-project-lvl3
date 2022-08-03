@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class Web::Admin::CategoriesController < ApplicationController
   after_action :verify_authorized
-  before_action :set_category, only: %i[ edit update destroy ]
-  before_action :authorize_user, only: %i[ edit update destroy ]
+  before_action :set_category, only: %i[edit update destroy]
+  before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @categories = Category.order created_at: :asc
@@ -13,15 +15,14 @@ class Web::Admin::CategoriesController < ApplicationController
     authorize @category
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     authorize Category
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to admin_categories_path, notice: "Category was successfully created."
+      redirect_to admin_categories_path, notice: t('category.action_create')
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,32 +30,30 @@ class Web::Admin::CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      redirect_to admin_categories_path, notice: "Category was successfully updated."
+      redirect_to admin_categories_path, notice: t('category.action_update')
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    begin
-      @category.destroy
-      redirect_to admin_categories_path, notice: "Category was successfully destroyed."
-    rescue
-      redirect_to admin_categories_path, notice: "Не удалось удалить категорию, так как она содержит объявления"
-    end
+    @category.destroy
+    redirect_to admin_categories_path, notice: t('category.action_update')
+  rescue StandardError
+    redirect_to admin_categories_path, notice: t('category.destroy_warning')
   end
 
   private
 
-    def authorize_user
-      authorize @category
-    end
+  def authorize_user
+    authorize @category
+  end
 
-    def set_category
-      @category = Category.find(params[:id])
-    end
+  def set_category
+    @category = Category.find(params[:id])
+  end
 
-    def category_params
-      params.require(:category).permit(:name)
-    end
+  def category_params
+    params.require(:category).permit(:name)
+  end
 end

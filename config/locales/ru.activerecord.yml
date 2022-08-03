@@ -1,8 +1,8 @@
 ru:
   activerecord:
     models:
-      bulletin: Объявление
-      category: Категория
+      bulletin: объявление
+      category: категорию
 
     attributes:
       bulletin:

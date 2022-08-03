@@ -1,28 +1,29 @@
+# frozen_string_literal: true
+
 class Web::BulletinsController < ApplicationController
   after_action :verify_authorized, except: %i[index show to_moderate archive]
-  before_action :set_bulletin, only: %i[ show edit update destroy ]
+  before_action :set_bulletin, only: %i[show edit update destroy]
   before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @q = Bulletin.ransack(params[:q])
-    
+
     @pagy, @bulletins = pagy @q.result(distinct: true).where(aasm_state: 'published').includes(:category)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @bulletin = Bulletin.new
     authorize @bulletin
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     authorize Bulletin
     @bulletin = current_user.bulletins.build(bulletin_params)
+    debugger
     if @bulletin.save
       redirect_to bulletin_url(@bulletin), notice: t('bulletin.action_create')
     else
@@ -46,12 +47,12 @@ class Web::BulletinsController < ApplicationController
   def to_moderate
     @bulletin = Bulletin.find(params[:id])
     if @bulletin.archived?
-      redirect_to profile_path, notice: "Archive bulletin"
+      redirect_to profile_path, notice: t('bulletin.archive_ad')
     elsif @bulletin.may_to_moderate?
       @bulletin.to_moderate!
-      redirect_to  profile_path, notice: "The ad has been sent for moderation"
+      redirect_to profile_path, notice: t('bulletin.send_moderate')
     else
-      redirect_to profile_path, notice: "The ad has not been sent for moderation "
+      redirect_to profile_path, notice: t('bulletin.send_not_moderate')
     end
   end
 
@@ -59,24 +60,23 @@ class Web::BulletinsController < ApplicationController
     @bulletin = Bulletin.find(params[:id])
     if @bulletin.may_archive?
       @bulletin.archive!
-      redirect_to profile_path, notice: "The bulletin has been archived"
+      redirect_to profile_path, notice: t('bulletin.archive_ad')
     else
-      redirect_to profile_path, notice: "The bulletin has not been archived"
+      redirect_to profile_path, notice: t('bulletin.archive_not_ad')
     end
   end
-  
 
   private
 
-    def authorize_user
-      authorize @bulletin
-    end
+  def authorize_user
+    authorize @bulletin
+  end
 
-    def set_bulletin
-      @bulletin = Bulletin.find(params[:id])
-    end
+  def set_bulletin
+    @bulletin = Bulletin.find(params[:id])
+  end
 
-    def bulletin_params
-      params.require(:bulletin).permit(:title, :description, :category_id, :user_id, :image)
-    end
+  def bulletin_params
+    params.require(:bulletin).permit(:title, :description, :category_id, :user_id, :image)
+  end
 end

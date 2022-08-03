@@ -6,21 +6,29 @@ en:
     action_destroy: Bulletin was successfully destroyed!
     all: All bulletins
     archive: Archived
-    body: Text
+    archive_ad: The ad is in the archive!
+    archive_not_ad: The ad is not archived!
     category: Category
     date: Date of publication
     destroy: Destroy
     edit: Edit
+    editing: Editing ad
     at_moderate: Ads in moderation
     admin_moderate: Ads for moderation
     moderate: For moderate
     new: New bulletin
     publish: Published
+    published: The ad is published
+    published_not: The ad is not published
     return: Return
+    reject: The ad is returned
+    reject_not: The ad is not returned
     title: Title
     search_state: As of
     search_title: Search by ad title
     search_category: Select category
+    send_moderate: The ad has been sent for moderation
+    send_not_moderate: The ad has not been sent for moderation 
     show: Show
     state: State
     user: My bulletins

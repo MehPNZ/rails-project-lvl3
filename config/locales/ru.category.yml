@@ -1,15 +1,17 @@
 ru:
  category:
     actions: Действия
-    action_create: Категория успешно создано!
-    action_update: Категория успешно обновлено!
-    action_destroy: Категория успешно удалено!
+    action_create: Категория успешно создана!
+    action_update: Категория успешно обновлена!
+    action_destroy: Категория успешно удалена!
+    destroy_warning: Не удалось удалить категорию, так как она содержит объявления
     all: Все категории
     body: Текст
     category: Категория
     categories: Категории
     destroy: Удалить
     edit: Редактировать
+    editing: Редактировать категорию
     new: Новая категория
     title: Название
     show: Показать

@@ -4,12 +4,14 @@ en:
     action_create: Category was successfully created.
     action_update: Category was successfully updated!
     action_destroy: Category was successfully destroyed!
+    destroy_warning: Failed to delete a category because it contains ads
     all: All categories
     body: Text
     category: Category
     categories: Categories
     destroy: Destroy
     edit: Edit
+    editing: Editing category
     new: New category
     title: Title
     show: Show

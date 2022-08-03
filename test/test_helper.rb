@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 ENV['RAILS_ENV'] ||= 'test'
-require_relative "../config/environment"
-require "rails/test_help"
+require_relative '../config/environment'
+require 'rails/test_help'
 
 OmniAuth.config.test_mode = true
 
@@ -15,7 +17,7 @@ class ActiveSupport::TestCase
 end
 
 class ActionDispatch::IntegrationTest
-  def sign_in(user, options = {})
+  def sign_in(user, _options = {})
     auth_hash = {
       provider: 'github',
       uid: '12345',

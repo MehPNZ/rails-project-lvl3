@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-  
   scope module: :web do
-
     namespace :admin do
       resources :categories
       resources :bulletins do
@@ -18,13 +16,12 @@ Rails.application.routes.draw do
 
     root 'bulletins#index'
 
-    get "/admin", to: "admin#index"
-    get "/profile", to: "user#show"
+    get '/admin', to: 'admin#index'
+    get '/profile', to: 'user#show'
 
     post 'auth/:provider', to: 'auth#request', as: :auth_request
     get 'auth/:provider/callback', to: 'auth#callback', as: :callback_auth
 
     resource :session, only: :destroy
-
   end
 end

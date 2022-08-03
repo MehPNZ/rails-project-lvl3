@@ -23,7 +23,7 @@ class CategoryPolicy < ApplicationPolicy
   end
 
   def edit?
-   user&.admin?
+    user&.admin?
   end
 
   def destroy?

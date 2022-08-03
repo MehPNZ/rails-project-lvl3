@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Web::AuthController < ApplicationController
   def callback
     email = auth[:info][:email].downcase
@@ -5,13 +7,12 @@ class Web::AuthController < ApplicationController
     existing_user = User.find_by(email: email)
 
     if existing_user
-       sign_in existing_user
-       redirect_to root_path, notice: t('user.welcome', user_name: name)
+      sign_in existing_user
+      redirect_to root_path, notice: t('user.welcome', user_name: name)
     else
       user = User.new(email: email, name: name)
       create_user(user)
     end
-
   end
 
   private

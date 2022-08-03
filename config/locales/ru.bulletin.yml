@@ -6,23 +6,29 @@ ru:
     action_destroy: Объявление успешно удалено!
     all: Все объявления
     archive: В архив
-    body: Текст
-    category: Категория
-    create: Опубликовать
-    creator: Автор
-    date: Дата публикации
-    destroy: Удалить
-    edit: Редактировать
+    archive_ad: Объявление в архиве!
+    archive_not_ad: Оъявление не было отправлено в архив!
     at_moderate: Объявления на модерации
     admin_moderate: Объявления на модерацию
+    category: Категория
+    create: Опубликовать
+    destroy: Удалить
+    edit: Редактировать
+    editing: Редактировать объявление
     moderate: На модерацию
     new: Добавить объявление
     publish: Опубликовать
+    published: Объявление опубликовано
+    published_not: Объявление не опубликовано
     return: Вернуть
+    reject: Объвление возвращено
+    reject_not: Объвление не возвращено
     title: Название
     search_state: По состоянию
     search_title: Искать по названию объявления
-    search_category: Выбрать категорию 
+    search_category: Выбрать категорию
+    send_moderate: Объявление отправлено на модерацию
+    send_not_moderate: Объявление не было отправлено на модерацию
     show: Показать
     state: Состояние
     user: Мои объявления

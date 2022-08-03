@@ -1,8 +1,8 @@
 en:
   activerecord:
     models:
-      bulletin: Bulletin
-      category: Category
+      bulletin: bulletin
+      category: сategory
 
     attributes:
       bulletin:
