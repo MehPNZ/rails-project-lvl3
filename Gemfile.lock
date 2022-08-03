@@ -81,7 +81,7 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
     aws-eventstream (1.2.0)
-    aws-partitions (1.613.0)
+    aws-partitions (1.614.0)
     aws-sdk-core (3.131.5)
       aws-eventstream (~> 1, >= 1.0.2)
       aws-partitions (~> 1, >= 1.525.0)
@@ -117,7 +117,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    erubi (1.10.0)
+    erubi (1.11.0)
     faker (2.22.0)
       i18n (>= 1.8.11, < 2)
     faraday (2.4.0)
@@ -354,6 +354,7 @@ DEPENDENCIES
   image_processing
   jbuilder (~> 2.7)
   listen (~> 3.3)
+  mini_magick (>= 4.9.5)
   minitest-power_assert
   omniauth-github
   omniauth-rails_csrf_protection
@@ -368,6 +369,7 @@ DEPENDENCIES
   rollbar
   rubocop-performance
   rubocop-rails
+  ruby-vips (>= 2.1.0)
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   simple_form

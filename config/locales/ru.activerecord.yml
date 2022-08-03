@@ -9,7 +9,7 @@ ru:
         description: Описание
         title: Название
         category: Категория
-        image: Добавить изображение 
+        image: Изображение
       category:
         name: Название
 

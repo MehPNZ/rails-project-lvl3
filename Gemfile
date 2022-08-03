@@ -6,7 +6,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
+gem 'active_storage_validations'
+gem 'mini_magick', '>= 4.9.5'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
+gem 'ruby-vips', '>= 2.1.0'
+
 gem 'rubocop-performance'
 # Use sqlite3 as the database for Active Record
 # Use Puma as the app server
@@ -73,7 +77,6 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'aasm'
-gem 'active_storage_validations'
 gem 'aws-sdk-s3'
 gem 'image_processing'
 gem 'pagy', '~> 5.10'
