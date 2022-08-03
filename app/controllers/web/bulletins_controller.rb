@@ -23,7 +23,6 @@ class Web::BulletinsController < ApplicationController
   def create
     authorize Bulletin
     @bulletin = current_user.bulletins.build(bulletin_params)
-    debugger
     if @bulletin.save
       redirect_to bulletin_url(@bulletin), notice: t('bulletin.action_create')
     else

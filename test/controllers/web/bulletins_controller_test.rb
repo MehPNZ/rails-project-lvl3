@@ -11,7 +11,7 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
       description: Faker::Books::Dune.quote,
       category_id: 1,
       user_id: 1,
-      image: fixture_file_upload("hexlet.jpeg", "image/jpeg")
+      image: fixture_file_upload('hexlet.jpeg', 'image/jpeg')
     }
   end
 
@@ -20,7 +20,7 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test 'should get new' do 
+  test 'should get new' do
     sign_in(@user)
 
     get new_bulletin_url
@@ -42,12 +42,11 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
   #       name: "David",
   #       avatar: fixture_file_upload("david.png", "image/png")
   #     }
-  
+
   #     user = User.order(:created_at).last
   #     assert user.avatar.attached?
   #   end
   # end
-
 
   test 'should show bulletin' do
     get bulletin_url(@bulletin)
@@ -68,7 +67,6 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
   #   @bulletin.reload
   #   assert { @bulletin.title == @attrs[:title] }
   # end
-
 
   # test 'should destroy bulletin' do
   #   assert_difference('Bulletin.count', -1) do
