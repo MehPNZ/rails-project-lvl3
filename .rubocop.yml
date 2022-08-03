@@ -1,17 +1,23 @@
+---
+
 require:
   - rubocop-rails
-  - rubocop-performance
 
 AllCops:
   NewCops: enable
-  TargetRubyVersion: 3.0.2
   Exclude:
-    - 'bin/**'
-    - 'config/**/*'
-    - 'db/schema.rb'
-    - 'db/migrate/**'
+    - 'code/bin/**'
+    - 'code/db/schema.rb'
+    - 'code/db/migrate/**'
+    - 'code/vendor/**/*'
+    - 'code/node_modules/**/*'
     - 'vendor/**/*'
     - 'node_modules/**/*'
+    - 'code/tmp/**/*'
+  SuggestExtensions: false
+
+Rails:
+  Enabled: true
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -37,5 +43,5 @@ Metrics/BlockLength:
 Style/AsciiComments:
   Enabled: false
 
-Rails/HasManyOrHasOneDependent:
+Metrics/ParameterLists:
   Enabled: false

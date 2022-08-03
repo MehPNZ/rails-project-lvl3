@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Load the Rails application.
 require_relative 'application'
 
@@ -18,7 +20,7 @@ end
 
 begin
   Rails.application.initialize!
-rescue Exception => e
+rescue StandardError => e
   notify.call(e)
   raise
 end
