@@ -1,0 +1,15 @@
+en:
+  category:
+    actions: Actions
+    action_create: Category was successfully created.
+    action_update: Category was successfully updated!
+    action_destroy: Category was successfully destroyed!
+    all: All categories
+    body: Text
+    category: Category
+    categories: Categories
+    destroy: Destroy
+    edit: Edit
+    new: New category
+    title: Title
+    show: Show

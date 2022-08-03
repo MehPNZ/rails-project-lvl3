@@ -1,0 +1,8 @@
+.col-md-3
+  ul.nav.flex-column.nav-pills
+    li.nav-item
+      =link_to t('bulletin.at_moderate'), admin_path, class: 'nav-link link-dark'
+    li.nav-item
+      = link_to t('bulletin.all'), admin_bulletins_path, class: 'nav-link link-dark'
+    li.nav-item
+      = link_to t('categories'), admin_categories_path, class: 'nav-link link-dark'

@@ -1,12 +1,15 @@
 ru:
+  admin: Админка
+  categories: Все категории
+  archived: В архиве
+  draft: Черновик
   title:
     title_head: Доска объявлений
-    title_main: Коллективный блог
+    title_main: Объявления
   home: Главная
   back: Назад
-  comments_count:
-    zero: "нет комментариев"
-    one: "%{count} комментарий"
-    few: "%{count} комментария"
-    many: "%{count} комментариев"
-    other: "%{count} комментарии"
+  published: Опубликовано
+  search: Искать
+  rejected: Возвращено
+  reset: Сброс
+  under_moderation: На модерации

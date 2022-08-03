@@ -1,10 +1,15 @@
 en:
+  admin: Admin
+  categories: All categories
+  archived: Archived
+  draft: Draft
   title:
     title_head: Bulletin board 
-    title_main: Collective blog
+    title_main: Bulletins
   home: Home
   back: Back
-  comments_count:
-    zero: No comments
-    one: "%{count} comment"
-    other: "%{count} comments"
+  published: Published
+  search: Search
+  rejected: Reject
+  reset: Reset
+  under_moderation: Under Moderation

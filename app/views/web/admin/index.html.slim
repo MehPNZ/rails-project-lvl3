@@ -1,0 +1,29 @@
+.row
+  .col-md-3
+    ul.nav.flex-column.nav-pills
+      li.nav-item
+        =link_to t('bulletin.at_moderate'), admin_path, class: 'nav-link link-dark active'
+      li.nav-item
+        = link_to t('bulletin.all'), admin_bulletins_path, class: 'nav-link link-dark'
+      li.nav-item
+        = link_to t('categories'), admin_categories_path, class: 'nav-link link-dark'
+  .col-md-9
+    h2 = t('bulletin.admin_moderate')
+    .row.mt-2
+      table.table-borderless
+        thead
+          tr
+            th = t('bulletin.title')
+            th = t('bulletin.date')
+            th = t('bulletin.action')
+            th
+
+        tbody
+          - @bulletins.each do |bulletin|
+            tr
+              td = bulletin.title
+              td = bulletin.created_at.strftime("%d-%m-%Y")
+              td = link_to t('bulletin.publish'), publish_admin_bulletin_path(bulletin), method: :patch, class: 'me-1'
+              td = link_to t('bulletin.return'), reject_admin_bulletin_path(bulletin), method: :patch, class: 'me-1'
+              td = link_to t('bulletin.archive'), archive_admin_bulletin_path(bulletin), method: :patch, class: 'text-danger'
+              td

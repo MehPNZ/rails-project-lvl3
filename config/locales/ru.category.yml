@@ -1,0 +1,15 @@
+ru:
+ category:
+    actions: Действия
+    action_create: Категория успешно создано!
+    action_update: Категория успешно обновлено!
+    action_destroy: Категория успешно удалено!
+    all: Все категории
+    body: Текст
+    category: Категория
+    categories: Категории
+    destroy: Удалить
+    edit: Редактировать
+    new: Новая категория
+    title: Название
+    show: Показать

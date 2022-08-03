@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   include AuthConcern
+  include Pundit::Authorization
+  include Pagy::Backend
 
   around_action :switch_locale
 

@@ -1,0 +1,28 @@
+ru:
+  bulletin:
+    actions: Действия
+    action_create: Объявление успешно создано!
+    action_update: Объявление успешно обновлено!
+    action_destroy: Объявление успешно удалено!
+    all: Все объявления
+    archive: В архив
+    body: Текст
+    category: Категория
+    create: Опубликовать
+    creator: Автор
+    date: Дата публикации
+    destroy: Удалить
+    edit: Редактировать
+    at_moderate: Объявления на модерации
+    admin_moderate: Объявления на модерацию
+    moderate: На модерацию
+    new: Добавить объявление
+    publish: Опубликовать
+    return: Вернуть
+    title: Название
+    search_state: По состоянию
+    search_title: Искать по названию объявления
+    search_category: Выбрать категорию 
+    show: Показать
+    state: Состояние
+    user: Мои объявления

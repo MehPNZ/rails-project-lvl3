@@ -1,0 +1,26 @@
+en:
+  bulletin:
+    actions: Actions
+    action_create: Bulletin was successfully created.
+    action_update: Bulletin was successfully updated!
+    action_destroy: Bulletin was successfully destroyed!
+    all: All bulletins
+    archive: Archived
+    body: Text
+    category: Category
+    date: Date of publication
+    destroy: Destroy
+    edit: Edit
+    at_moderate: Ads in moderation
+    admin_moderate: Ads for moderation
+    moderate: For moderate
+    new: New bulletin
+    publish: Published
+    return: Return
+    title: Title
+    search_state: As of
+    search_title: Search by ad title
+    search_category: Select category
+    show: Show
+    state: State
+    user: My bulletins

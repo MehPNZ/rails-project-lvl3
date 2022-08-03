@@ -5,7 +5,15 @@ header.p-3.bg-dark.text-white
         li.nav-item.me-2
           = link_to root_path, class: 'nav-link text-white' do
             = t('home')
+        - if user_signed_in?
+          li
+            = link_to t('bulletin.user'), profile_path ,class: 'nav-link text-white'
+          li
+            = link_to t('bulletin.new'), new_bulletin_path, class: 'nav-link text-white'
       ul.nav.col-12.col-lg-auto.mb-2.mb-md-0
+        - if user_signed_in? && current_user.admin?  
+          li.nav-item.me-2
+            = link_to t('admin'), admin_path, class: 'nav-link text-white'
         li.nav-item.me-2
         - if user_signed_in?
           li.nav-item.me-2

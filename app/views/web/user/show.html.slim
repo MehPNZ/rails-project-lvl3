@@ -1,0 +1,57 @@
+.row
+  .p-3.p-lg-5.pt-lg-0
+    .mb-4
+      h2 = t('bulletin.user')
+      hr
+      = link_to t('bulletin.new'), new_bulletin_path
+
+      = search_form_for @q, url: profile_path do |f|
+        .row.my-2
+          .col-6
+            .form-group.mb-3
+              = f.search_field :title_cont, class: 'form-control'
+              p 
+                small class="form-text text-muted" = t('bulletin.search_title')
+          .col-3
+            .form-group.mb-3
+              = f.select :aasm_state_cont, 
+                [["#{t('draft')}", :draft], 
+                ["#{t('under_moderation')}", :under_moderation], 
+                ["#{t('published')}", :published],
+                ["#{t('rejected')}", :rejected],
+                ["#{t('archived')}", :archived]], {include_blank: true}, {class: 'form-control'}
+              p 
+                small class="form-text text-muted" = t('bulletin.search_state')
+          .col-3
+            = f.submit t('search'), class: 'btn btn-primary me-2' 
+            = link_to t('reset'), profile_path, class: 'btn btn-outline-primary'
+    .row.mt-2
+      table.table-borderless
+        thead
+          tr
+            th = t('bulletin.title')
+            th = t('bulletin.state')
+            th = t('bulletin.date')
+            th = t('bulletin.action')
+
+        tbody
+          - @bulletins.each do |bulletin|
+            tr
+              td = bulletin.title
+              td = t("#{bulletin.aasm_state}")
+              td = bulletin.created_at.strftime("%d-%m-%Y")
+              td = link_to t('bulletin.show'), bulletin_path(bulletin), class: 'me-2'
+              td = link_to t('bulletin.edit'), edit_bulletin_path(bulletin), class: 'me-2'
+        
+              - case bulletin.aasm_state
+                - when 'draft'
+                  td = link_to t('bulletin.moderate'), to_moderate_bulletin_path(bulletin), method: :patch, class: 'me-2'
+                  td = link_to t('bulletin.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'text-danger'
+                - when 'under_moderation'
+                  td = link_to t('bulletin.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'text-danger'
+                - when 'published'
+                  td = link_to t('bulletin.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'text-danger'
+                - when 'rejected'
+                  td = link_to t('bulletin.archive'), archive_bulletin_path(bulletin), method: :patch, class: 'text-danger'
+
+== pagy_bootstrap_nav @pagy

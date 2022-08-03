@@ -1,0 +1,34 @@
+.row
+  .p-3.p-lg-5.pt-lg-0
+    .mb-4
+      h2 = t('title.title_main')
+    .p-3.bg-light
+      = search_form_for @q do |f|
+        .row.my-2
+          .col-6
+            .form-group.mb-3
+              = f.search_field :title_cont, class: 'form-control'
+              p 
+                small class="form-text text-muted" = t('bulletin.search_title')
+          .col-4
+            .form-group.mb-3
+              = f.collection_select(:category_id_eq, Category.all, :id, :name, {include_blank: true}, {class: 'form-control'})
+              p 
+                small class="form-text text-muted" = t('bulletin.search_category')
+          .col-2
+            = f.submit t('search'), class: 'btn btn-primary'
+            p
+              .mt-1
+                = link_to t('reset'), root_path, class: 'btn btn-outline-primary'
+    .row.mt-2
+      - @bulletins.each do |bulletin|
+        .col-3.pt-2
+          .card.shadow-sm
+            - if bulletin.image_attachment
+              = image_tag(bulletin.image.variant(resize_to_limit: [600, 400]),height: 200, class: 'card-img-top x-object-fit-cover ')
+            .card-body
+              h5
+                = link_to bulletin.title, bulletin, class: 'card-subtitle mb-2 text-muted'
+              = bulletin.created_at.strftime("%d-%m-%Y")
+
+== pagy_bootstrap_nav @pagy

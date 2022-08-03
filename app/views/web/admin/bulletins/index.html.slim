@@ -1,0 +1,53 @@
+.row
+  .col-md-3
+    ul.nav.flex-column.nav-pills
+      li.nav-item
+        =link_to t('bulletin.at_moderate'), admin_path, class: 'nav-link link-dark'
+      li.nav-item
+        = link_to t('bulletin.all'), admin_bulletins_path, class: 'nav-link link-dark active'
+      li.nav-item
+        = link_to t('categories'), admin_categories_path, class: 'nav-link link-dark'
+  .col-md-9
+    h2 = t('title.title_main')
+    = search_form_for @q, url: admin_bulletins_path do |f|
+        .row.my-2
+          .col-6
+            .form-group.mb-3
+              = f.search_field :title_cont, class: 'form-control'
+              p 
+                small class="form-text text-muted" = t('bulletin.search_title')
+          .col-3
+            .form-group.mb-3
+              = f.select :aasm_state_cont, 
+                [["#{t('draft')}", :draft], 
+                ["#{t('under_moderation')}", :under_moderation], 
+                ["#{t('published')}", :published],
+                ["#{t('rejected')}", :rejected],
+                ["#{t('archived')}", :archived]], {include_blank: true} ,{class: 'form-control'}
+              p 
+                small class="form-text text-muted" = t('bulletin.search_state')
+          .col-3
+            = f.submit t('search'), class: 'btn btn-primary me-2' 
+            = link_to t('reset'), admin_bulletins_path, class: 'btn btn-outline-primary'
+    .row.mt-2
+      table.table-borderless
+        thead
+          tr
+            th = t('bulletin.title')
+            th = t('bulletin.state')
+            th = t('bulletin.date')
+            th = t('bulletin.action')
+            th
+
+        tbody
+          - @bulletins.each do |bulletin|
+            tr
+              td = bulletin.title
+              td = t("#{bulletin.aasm_state}")
+              td = bulletin.created_at.strftime("%d-%m-%Y")
+              td = link_to t('bulletin.show'), bulletin_path(bulletin), class: 'me-1'
+              - unless bulletin.archived?
+                td = link_to t('bulletin.archive'), "#", class: 'text-danger'
+              td
+
+== pagy_bootstrap_nav @pagy

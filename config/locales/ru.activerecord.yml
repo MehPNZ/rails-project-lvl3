@@ -1,0 +1,23 @@
+ru:
+  activerecord:
+    models:
+      bulletin: Объявление
+      category: Категория
+
+    attributes:
+      bulletin:
+        description: Описание
+        title: Название
+        category: Категория
+        image: Добавить изображение 
+      category:
+        name: Название
+
+    errors:
+      models:
+        bulletin:
+          attributes:
+            title:
+              blank: не может быть пустым!
+            description:
+              blank: не может быть пустым!

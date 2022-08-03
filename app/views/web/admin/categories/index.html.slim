@@ -1,0 +1,29 @@
+.row
+  .col-md-3
+    ul.nav.flex-column.nav-pills
+      li.nav-item
+        =link_to t('bulletin.at_moderate'), admin_path, class: 'nav-link link-dark'
+      li.nav-item
+        = link_to t('bulletin.all'), admin_bulletins_path, class: 'nav-link link-dark'
+      li.nav-item
+        = link_to t('categories'), admin_categories_path, class: 'nav-link link-dark active'
+  .col-md-9
+    h2 = t('category.categories')
+    = link_to t('category.new'), new_admin_category_path
+    .row.mt-2
+      table.table-borderless
+        thead
+          tr  
+            th Id
+            th = t('category.title')
+            th = t('bulletin.action')
+            th
+
+        tbody
+          - @categories.each do |category|
+            tr
+              td = category.id
+              td = category.name
+              td = link_to t('category.edit'), edit_admin_category_path(category), class: 'me-1'
+              td = link_to t('category.destroy'),admin_category_path(category), class: 'text-danger', method: :delete, data: { confirm: t('destroy_confirmation') }
+              td
