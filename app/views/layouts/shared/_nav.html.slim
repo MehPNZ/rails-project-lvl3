@@ -2,6 +2,9 @@ header.p-3.bg-dark.text-white
   .container
     .nav.d-flex.flex-wrap.align-items-center.justify-content-center.justify-content-lg-start
       ul.nav.col-12.col-lg-auto.me-lg-auto.mb-2.justify-content-center.mb-md-0
+        li.nav-item
+          = link_to root_path, class: 'nav-link text-white h5' do
+            = t('title.title_head')
         li.nav-item.me-2
           = link_to root_path, class: 'nav-link text-white' do
             = t('home')
