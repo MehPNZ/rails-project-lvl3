@@ -7,9 +7,7 @@ ruby '3.0.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'active_storage_validations'
-gem 'mini_magick', '>= 4.9.5'
 gem 'rails', '~> 6.1.6', '>= 6.1.6.1'
-gem 'ruby-vips', '>= 2.1.0'
 
 gem 'rubocop-performance'
 # Use sqlite3 as the database for Active Record

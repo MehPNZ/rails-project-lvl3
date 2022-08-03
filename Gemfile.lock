@@ -354,7 +354,6 @@ DEPENDENCIES
   image_processing
   jbuilder (~> 2.7)
   listen (~> 3.3)
-  mini_magick (>= 4.9.5)
   minitest-power_assert
   omniauth-github
   omniauth-rails_csrf_protection
@@ -369,7 +368,6 @@ DEPENDENCIES
   rollbar
   rubocop-performance
   rubocop-rails
-  ruby-vips (>= 2.1.0)
   sass-rails (>= 6)
   selenium-webdriver (>= 4.0.0.rc1)
   simple_form
