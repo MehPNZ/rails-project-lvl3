@@ -11,6 +11,4 @@
 
   - if @bulletin.image_attachment
     = image_tag @bulletin.image.variant(resize_to_limit: [200, 100]), class: 'img-thumbnail mb-2'
-
-
   = f.button :submit, class: 'btn btn-success mt-3 btn-block'
