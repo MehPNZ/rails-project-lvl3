@@ -10,3 +10,5 @@ I would like to introduce you to a new site - "Bulletin Board". You will be able
 For Russian-speaking people, there is an opportunity to switch the language.
 
 Thank you for your attention and visit our site:
+
+av-bulletin-board.herokuapp.com

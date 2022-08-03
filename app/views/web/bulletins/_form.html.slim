@@ -1,11 +1,16 @@
 = simple_form_for(@bulletin) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
+
   = f.input :title
   = f.input :description
   = f.association :category
-  = f.input :image, as: :file, input_html: { data: { direct_upload_url: '/rails/active_storage/direct_uploads' }, class: 'form-control' }
+  = f.input :image, as: :file, input_html: { class: 'form-control' }
+
   hr
+
   - if @bulletin.image_attachment
     = image_tag @bulletin.image.variant(resize_to_limit: [200, 100]), class: 'img-thumbnail mb-2'
+
+
   = f.button :submit, class: 'btn btn-success mt-3 btn-block'
