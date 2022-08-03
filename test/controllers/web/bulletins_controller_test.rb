@@ -36,18 +36,6 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
   #   assert_redirected_to bulletin_url(bulletin, locale: :en)
   # end
 
-  # class SignupController < ActionDispatch::IntegrationTest
-  #   test "can sign up" do
-  #     post signup_path, params: {
-  #       name: "David",
-  #       avatar: fixture_file_upload("david.png", "image/png")
-  #     }
-
-  #     user = User.order(:created_at).last
-  #     assert user.avatar.attached?
-  #   end
-  # end
-
   test 'should show bulletin' do
     get bulletin_url(@bulletin)
     assert_response :success
@@ -68,11 +56,12 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
   #   assert { @bulletin.title == @attrs[:title] }
   # end
 
-  # test 'should destroy bulletin' do
-  #   assert_difference('Bulletin.count', -1) do
-  #     delete bulletin_url(@bulletin)
-  #   end
+  test 'should destroy bulletin' do
+    sign_in(@user)
+    assert_difference('Bulletin.count', -1) do
+      delete bulletin_url(@bulletin)
+    end
 
-  #   assert_redirected_to bulletins_url
-  # end
+    assert_redirected_to bulletins_url(locale: :ru)
+  end
 end
