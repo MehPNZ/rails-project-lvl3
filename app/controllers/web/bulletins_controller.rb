@@ -3,7 +3,6 @@
 class Web::BulletinsController < ApplicationController
   after_action :verify_authorized, except: %i[index show to_moderate archive]
   before_action :set_bulletin, only: %i[show edit update destroy]
-  before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @q = Bulletin.ransack(params[:q])
@@ -18,7 +17,9 @@ class Web::BulletinsController < ApplicationController
     authorize @bulletin
   end
 
-  def edit; end
+  def edit
+    authorize @bulletin
+  end
 
   def create
     authorize Bulletin
@@ -31,6 +32,7 @@ class Web::BulletinsController < ApplicationController
   end
 
   def update
+    authorize @bulletin
     if @bulletin.update(bulletin_params)
       redirect_to bulletin_url(@bulletin), notice: t('bulletin.action_update')
     else
@@ -39,6 +41,7 @@ class Web::BulletinsController < ApplicationController
   end
 
   def destroy
+    authorize @bulletin
     @bulletin.destroy
     redirect_to bulletins_url, notice: t('bulletin.action_destroy')
   end
@@ -66,10 +69,6 @@ class Web::BulletinsController < ApplicationController
   end
 
   private
-
-  def authorize_user
-    authorize @bulletin
-  end
 
   def set_bulletin
     @bulletin = Bulletin.find(params[:id])

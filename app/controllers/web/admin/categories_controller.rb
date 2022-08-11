@@ -3,7 +3,6 @@
 class Web::Admin::CategoriesController < ApplicationController
   after_action :verify_authorized
   before_action :set_category, only: %i[edit update destroy]
-  before_action :authorize_user, only: %i[edit update destroy]
 
   def index
     @categories = Category.order created_at: :asc
@@ -15,7 +14,9 @@ class Web::Admin::CategoriesController < ApplicationController
     authorize @category
   end
 
-  def edit; end
+  def edit
+    authorize @category
+  end
 
   def create
     authorize Category
@@ -28,6 +29,7 @@ class Web::Admin::CategoriesController < ApplicationController
   end
 
   def update
+    authorize @category
     if @category.update(category_params)
       redirect_to admin_categories_path, notice: t('category.action_update')
     else
@@ -36,6 +38,7 @@ class Web::Admin::CategoriesController < ApplicationController
   end
 
   def destroy
+    authorize @category
     @category.destroy
     redirect_to admin_categories_path, notice: t('category.action_update')
   rescue StandardError
@@ -43,10 +46,6 @@ class Web::Admin::CategoriesController < ApplicationController
   end
 
   private
-
-  def authorize_user
-    authorize @category
-  end
 
   def set_category
     @category = Category.find(params[:id])

@@ -4,3 +4,4 @@ en:
     log_in: Log in
     sign_up: Registration
     log_out: Exit
+    error_auth: Error registration!

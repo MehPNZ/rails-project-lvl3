@@ -8,6 +8,7 @@ en:
     title_main: Bulletins
   home: Home
   back: Back
+  language_error: This language is not supported. The default language is used. 
   published: Published
   search: Search
   rejected: Reject

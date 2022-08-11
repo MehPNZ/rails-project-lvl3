@@ -27,14 +27,14 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test 'should create bulletin' do
-  #   sign_in(@user)
-  #   post bulletins_url(locale: :en), params: { bulletin: @attrs }
-  #   bulletin = Bulletin.find_by! title: @attrs[:title]
+  test 'should create bulletin' do
+    sign_in(@user)
+    post bulletins_url(locale: :en), params: { bulletin: @attrs }
+    bulletin = Bulletin.find_by! title: @attrs[:title]
 
-  #   assert { bulletin }
-  #   assert_redirected_to bulletin_url(bulletin, locale: :en)
-  # end
+    assert { bulletin }
+    assert_redirected_to bulletin_url(bulletin, locale: :en)
+  end
 
   test 'should show bulletin' do
     get bulletin_url(@bulletin)
@@ -47,14 +47,14 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  # test 'should update bulletin' do
-  #   sign_in(@user)
-  #   patch bulletin_url(@bulletin), params: { bulletin: @attrs}
-  #   assert_redirected_to bulletin_url(@bulletin)
+  test 'should update bulletin' do
+    sign_in(@user)
+    patch bulletin_url(@bulletin), params: { bulletin: @attrs }
+    assert_redirected_to bulletin_url(@bulletin, locale: :ru)
 
-  #   @bulletin.reload
-  #   assert { @bulletin.title == @attrs[:title] }
-  # end
+    @bulletin.reload
+    assert { @bulletin.title == @attrs[:title] }
+  end
 
   test 'should destroy bulletin' do
     sign_in(@user)
@@ -63,5 +63,23 @@ class BulletinsControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to bulletins_url(locale: :ru)
+  end
+
+  test 'should to_moderate' do
+    @bulletin.update(@attrs)
+    patch to_moderate_bulletin_url(@bulletin)
+    assert_redirected_to profile_url(locale: :ru)
+
+    @bulletin.reload
+    assert { @bulletin.state == 'under_moderation' }
+  end
+
+  test 'should to_archive' do
+    @bulletin.update(@attrs)
+    patch archive_bulletin_url(@bulletin)
+    assert_redirected_to profile_url(locale: :ru)
+
+    @bulletin.reload
+    assert { @bulletin.state == 'archived' }
   end
 end

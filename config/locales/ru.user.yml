@@ -4,3 +4,4 @@ ru:
     log_in: Войти
     sign_up: Регистрация
     log_out: Выйти
+    error_auth: Ошибка регистрации!

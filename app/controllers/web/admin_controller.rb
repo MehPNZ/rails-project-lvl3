@@ -2,6 +2,6 @@
 
 class Web::AdminController < ApplicationController
   def index
-    @pagy, @bulletins = pagy Bulletin.where(state: 'under_moderation').order(created_at: :desc)
+    @pagy, @bulletins = pagy Bulletin.under_moderation.order(created_at: :desc)
   end
 end
